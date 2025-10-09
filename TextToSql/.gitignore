@@ -1,0 +1,43 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dll
+*.egg-info/
+*.egg
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# === Virtual environments ===
+.venv/
+venv/
+env/
+ENV/
+.conda/
+.conda_env/
+TextToSqlDemo/
+
+# === Jupyter notebooks ===
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+*.nbconvert/
+*.checkpoint.ipynb
+.notebooks_cache/
+notebook.log
+
+# === PyCharm ===
+.idea/
+*.iml
+
+# === Colab / Google Drive temp ===
+.gdrive/
+.colab/
+cache/
+tmp/
+
+
