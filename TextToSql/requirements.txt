@@ -1,0 +1,8 @@
+dotenv
+sqlalchemy
+sqlglot
+pydantic
+langchain[groq]
+langchain-community
+langchain_core
+langgraph
