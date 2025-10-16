@@ -1,0 +1,10 @@
+dotenv
+langchain
+langchain-community
+langchain-core
+langchain-mongodb
+pymongo
+langchain[groq]
+langchain-openai
+
+
