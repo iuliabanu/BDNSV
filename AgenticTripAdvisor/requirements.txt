@@ -1,0 +1,10 @@
+dotenv
+pydantic
+pymongo
+openai
+langchain_core
+langchain[groq]
+langgraph
+IPython
+graphviz
+typing
