@@ -1,0 +1,119 @@
+networks:
+  mongo-sharded-network:
+    driver: bridge
+
+services:
+  # Config Servers (Replica Set)
+  configsrv1:
+    container_name: configsrv1
+    image: mongo:latest
+    command: mongod --configsvr --replSet rscfg --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 40001:27017
+    volumes:
+      - vcfgsvr1:/data/db
+    networks:
+      - mongo-sharded-network
+
+  configsrv2:
+    container_name: configsrv2
+    image: mongo:latest
+    command: mongod --configsvr --replSet rscfg --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 40002:27017
+    volumes:
+      - vcfgsvr2:/data/db
+    networks:
+      - mongo-sharded-network
+
+  # Shard 1 (Replica Set)
+  shard11:
+    container_name: shard11
+    image: mongo:latest
+    command: mongod --shardsvr --replSet rssh1 --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 50001:27017
+    volumes:
+      - vshard11:/data/db
+    networks:
+      - mongo-sharded-network
+
+  shard12:
+    container_name: shard12
+    image: mongo:latest
+    command: mongod --shardsvr --replSet rssh1 --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 50002:27017
+    volumes:
+      - vshard12:/data/db
+    networks:
+      - mongo-sharded-network
+
+  shard13:
+    container_name: shard13
+    image: mongo:latest
+    command: mongod --shardsvr --replSet rssh1 --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 50003:27017
+    volumes:
+      - vshard13:/data/db
+    networks:
+      - mongo-sharded-network
+
+  # Shard 2 (Replica Set)
+  shard21:
+    container_name: shard21
+    image: mongo:latest
+    command: mongod --shardsvr --replSet rssh2 --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 50004:27017
+    volumes:
+      - vshard21:/data/db
+    networks:
+      - mongo-sharded-network
+
+  shard22:
+    container_name: shard22
+    image: mongo:latest
+    command: mongod --shardsvr --replSet rssh2 --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 50005:27017
+    volumes:
+      - vshard22:/data/db
+    networks:
+      - mongo-sharded-network
+
+  shard23:
+    container_name: shard23
+    image: mongo:latest
+    command: mongod --shardsvr --replSet rssh2 --port 27017 --dbpath /data/db --bind_ip_all
+    ports:
+      - 50006:27017
+    volumes:
+      - vshard23:/data/db
+    networks:
+      - mongo-sharded-network
+
+  # Mongos (Query Router)
+  mongos:
+    container_name: mongos
+    image: mongo:latest
+    command: mongos --configdb rscfg/configsrv1:27017,configsrv2:27017 --bind_ip_all --port 27017
+    ports:
+      - 40003:27017
+    networks:
+      - mongo-sharded-network
+    depends_on:
+      - configsrv1
+      - configsrv2
+
+
+volumes:
+  vcfgsvr1:
+  vcfgsvr2:
+  vshard11:
+  vshard12:
+  vshard13:
+  vshard21:
+  vshard22:
+  vshard23:
