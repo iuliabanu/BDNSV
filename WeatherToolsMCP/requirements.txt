@@ -1,0 +1,12 @@
+langchain-mcp-adapters
+langchain
+langchain[groq]
+dotenv
+mcp
+requests
+pymongo
+dotenv
+llama-index-llms-groq
+llama-index
+langchain_core
+redis
