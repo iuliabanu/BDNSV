@@ -1,0 +1,10 @@
+neo4j
+dotenv
+langchain
+langchain-community
+langchain-core
+langchain-neo4j
+langchain[groq]
+langchain-openai
+openai
+pandas
