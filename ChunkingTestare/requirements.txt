@@ -1,0 +1,36 @@
+dotenv
+beautifulsoup4
+requests
+tqdm
+ipywidgets
+
+# Data Processing
+lxml
+pandas
+numpy
+
+# Visualisation
+matplotlib
+seaborn
+
+# Text Processing
+langchain-text-splitters
+langchain
+tiktoken
+
+
+llama-index
+llama-index-embeddings-openai
+llama-index-llms-openai
+llama-index-vector-stores-chroma
+
+chromadb
+pinecone
+
+# Reranking
+sentence-transformers
+cohere
+
+# Evaluation (RAGAS)
+ragas
+datasets
